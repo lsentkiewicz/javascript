@@ -128,13 +128,13 @@ Development mode:
 
 ## Security
 - Use [pbkdf2](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback) algorithm for password hashing.
-  - Generate a random salt for every user with min. 16 bytes.
+  - Generate a random salt for every user with min. 16 bytes.  
     ```
     require('crypto').randomBytes(16).toString('hex')
     ```
-  - Number of iteration must be set to min. `100000` and keylen to `512`. It will take ~1s to generate a hash.
+  - The number of iteration must be set to min. `100000`, keylen to `512` and digest to `sha512`. It will take ~1s to generate a hash.
   - Always use an async version.
-  - In development/test modes you can set a lowwer value for iterations to speed up development or test.
+  - In development/test modes you can set a lower value for iterations to speed up development or testing.
   - Why not bcrypt module?
     - [bcryptjs](https://www.npmjs.com/package/bcryptjs) is a pure JS module, and it blocks the whole nodejs thread. It's easy to DDOS application.
     - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra depedencies
