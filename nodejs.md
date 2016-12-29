@@ -1,5 +1,5 @@
 # nodejs
-Standards and best practcies for nodejs applications.
+Standards and best practices for nodejs applications.
 
 
 ## Table of Contents
@@ -51,7 +51,7 @@ project
   - `test.json` similar to `production.json`, but loaded when `NODE_ENV` is equal to `TEST`. Usually, you should use a different database url.
   - `custom-environment-variables.json` it will override all previous settings based on env variables. Read more [here](https://github.com/lorenwest/node-config/wiki/Environment-Variables#custom-environment-variables).
 
-Example configuration files for heroku application with mongolab.
+Example configuration files for Heroku application with MongoLab.
 
 ```
 // custom-environment-variables.json
@@ -83,4 +83,3 @@ Example configuration files for heroku application with mongolab.
     "MONGODB_URL": "mongodb://localhost:27017/my_app_test"
 }
 ```
-
