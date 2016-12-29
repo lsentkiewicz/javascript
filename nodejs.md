@@ -140,6 +140,9 @@ Development mode:
     - [bcryptjs](https://www.npmjs.com/package/bcryptjs) is a pure JS module, and it blocks the whole nodejs thread. It's easy to DDOS application.
     - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra dependencies
     - `crypto` is a native nodejs module
-- Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes`. It's ok to use `Math.random()` to generate sample data, but not ok to generate access tokens.
+- Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes(N)`. It's ok to use `Math.random()` to generate sample data, but not ok to generate access tokens.
 - The simplest solution to create access tokens or reset password tokens is to use UUID. Use [node-uuid](https://github.com/kelektiv/node-uuid) and generate a v4 UUID.
 - Alternatively, you can create a [random string](https://www.npmjs.com/package/randomstring). When using a charset [a-zA-Z0-9], the string must have min. 20 length.
+- Do not use JWT for authentication when using a database. JWT cannot be revoked, and the expiration date can't be extended. The frontend application must implement a "refresh token" logic, which adds some complexity to the application.
+- Use JWT only when communicating between services that can't share a database connection.
+- The access token should have an expiration date. Should be revoked when calling the logout endpoint. The expiration date should be extended when performing any API call.
