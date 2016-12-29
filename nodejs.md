@@ -113,3 +113,11 @@ Development mode:
 - Watch mode must be implemented. The application should auto reload on any file change. Use [nodemon](https://www.npmjs.com/package/nodemon).
 - Allowed to log debug information.
 - Allowed to return stack traces in the API response.
+
+## Error handling
+- Starter packs use service wrappers for proper error handling.
+- Do not ignore errors in empty `try ... catch`. Log an error or add a proper inline comment in your code.
+
+## Logging
+- It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, extra properties).
+- By default, do not configure logger to output data to log files. It's handler automatically when deployed to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
