@@ -132,7 +132,8 @@ Development mode:
     ```
     require('crypto').randomBytes(16).toString('hex')
     ```
-  - The number of iteration must be set to min. `100000`, keylen to `512` and digest to `sha512`. It will take ~1s to generate a hash.
+  - The number of iteration must be set to min. `100000`, keylen to `512` and digest to `sha512`.
+    It will take ~1s to generate a hash.
   - Always use an async version.
   - In development/test modes you can set a lower value for iterations to speed up development or testing.
   - Why not bcrypt module?
