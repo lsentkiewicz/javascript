@@ -123,3 +123,4 @@ Development mode:
 ## Logging
 - It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, extra properties).
 - By default, do not configure logger to output data to log files. It's handled automatically when deploying to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
+- Do not log senstive information (also in development mode): passwords, secrets, access tokens, credit cards. 
