@@ -43,7 +43,8 @@ project
 ## Configuration
 - Use [node-config](https://www.npmjs.com/package/config).  
 - Use `.json` extension by default. If values are dynamic/javascript based then use `.js` extension.
-
+- Use UPPERCASE naming. Grouping variables in nested objects is allow.
+- Do not put every constant to the configuration file. Some values are never changed, and it's better to keep them in a seperate file e.g. `Const.js`.
 - Usually, there should 4 files:
   - `default.json` contains default values for all environments. It should define settings for localhost deployment.
   - `production.json` will override `default.js`. Loaded when `NODE_ENV` is equal to `production`. Do not duplicate settings from `default.json`. Define only differences for example: disable verbose logging.
