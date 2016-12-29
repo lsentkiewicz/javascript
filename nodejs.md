@@ -107,8 +107,9 @@ Production mode:
 - `NODE_ENV` must be set to `production`
 - Only errors must be logged to the console. Do not output any debug information because log files will grow really fast.
 - Do not return stack traces in the API response.
+
 Development mode:
 - `NODE_ENV` must be set to `development`
 - Watch mode must be implemented. The application should auto reload on any file change. Use [nodemon](https://www.npmjs.com/package/nodemon).
-- Allowed tp log debug information.
+- Allowed to log debug information.
 - Allowed to return stack traces in the API response.
