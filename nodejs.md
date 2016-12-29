@@ -42,11 +42,11 @@ project
 
 ## Configuration
 Use [node-config](https://www.npmjs.com/package/config).  
-Use `.json` extension. If values are dynamic/javascript based then use `.js` extension.
+Use `.json` extension by default. If values are dynamic/javascript based then use `.js` extension.
 
 Usually, there should 4 files:
 - `default.json` contains default values for all environments. It should define settings for localhost deployment.
-- `production.json` will override `default.js`. Loaded when `NODE_ENV` is equal to `production`. Do not duplicate settings from `default.js`. Define only differences for example: disable verbose logging.
+- `production.json` will override `default.js`. Loaded when `NODE_ENV` is equal to `production`. Do not duplicate settings from `default.json`. Define only differences for example: disable verbose logging.
 - `test.json` similar to `production.json`, but loaded when `NODE_ENV` is equal to `TEST`. Usually, you should use a different database url.
 - `custom-environment-variables.json` it will override all previous settings based on env variables. Read more [here](https://github.com/lorenwest/node-config/wiki/Environment-Variables#custom-environment-variables).
 
@@ -56,11 +56,30 @@ Example configuration files for heroku application with mongolab.
 // custom-environment-variables.json
 {
     "PORT": "PORT",
-    "MONGODB_URL": "MONGOLAB_URI",
+    "MONGODB_URL": "MONGOLAB_URI"
 }
-
 ```
 
+```
+// default.json
+{
+    "LOG_LEVEL": "debug",
+    "PORT": 3500,
+    "MONGODB_URL": "mongodb://localhost:27017/my_app"
+}
+```
 
+```
+// production.json
+{
+    "LOG_LEVEL": "info"
+}
+```
 
+```
+// test.json
+{
+    "MONGODB_URL": "mongodb://localhost:27017/my_app_test"
+}
+```
 
