@@ -8,6 +8,8 @@ Standards and best practices for nodejs applications.
 1. [Configuration](#configuration)
 1. [Npm scripts](#npm-scripts)
 1. [Production and development modes](#production-and-development-modes)
+1. [Error handling](#error-handling)
+1. [Logging](#logging)
 
 
 
@@ -120,4 +122,4 @@ Development mode:
 
 ## Logging
 - It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, extra properties).
-- By default, do not configure logger to output data to log files. It's handler automatically when deployed to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
+- By default, do not configure logger to output data to log files. It's handled automatically when deploying to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
