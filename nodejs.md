@@ -142,4 +142,4 @@ Development mode:
     - `crypto` is a native nodejs module
 - Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes`. It's ok to use `Math.random()` to generate sample data, but not ok to generate access tokens.
 - The simplest solution to create access tokens or reset password tokens is to use UUID. Use [node-uuid](https://github.com/kelektiv/node-uuid) and generate a v4 UUID.
-- Alternatively, you can create a [random string](https://www.npmjs.com/package/randomstring). When using a charset [a-zA-Z0-9), the string must have min. 20 length.
+- Alternatively, you can create a [random string](https://www.npmjs.com/package/randomstring). When using a charset [a-zA-Z0-9], the string must have min. 20 length.
