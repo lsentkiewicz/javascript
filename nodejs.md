@@ -10,6 +10,7 @@ Standards and best practices for nodejs applications.
 1. [Production and development modes](#production-and-development-modes)
 1. [Error handling](#error-handling)
 1. [Logging](#logging)
+1. [Security](#security)
 
 
 
@@ -124,3 +125,17 @@ Development mode:
 - It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, extra properties).
 - By default, do not configure logger to output data to log files. It's handled automatically when deploying to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
 - Do not log senstive information (also in development mode): passwords, secrets, access tokens, credit cards. 
+
+## Security
+- Use [pbkdf2](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback) algorithm for password hashing.
+  - Generate a random salt for every user with min. 16 bytes.
+    ```
+    require('crypto').randomBytes(16).toString('hex')
+    ```
+  - Number of iteration must be set to min. `100000` and keylen to `512`. It will take ~1s to generate a hash.
+  - Always use an async version.
+  - In development/test modes you can set a lowwer value for iterations to speed up development or test.
+  - Why not bcrypt module?
+    - [bcryptjs](https://www.npmjs.com/package/bcryptjs) is a pure JS module, and it blocks the whole nodejs thread. It's easy to DDOS application.
+    - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra depedencies
+    - `crypto` is a native nodejs module
