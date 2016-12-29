@@ -5,9 +5,9 @@ Standards and best practices for nodejs applications.
 ## Table of Contents
 
 1. [Application structure](#application-structure)
-1. [Configuration](#application-structure)
-1. [Npm scripts](#application-structure)
-1. [Production and development modes](#application-structure)
+1. [Configuration](#configuration)
+1. [Npm scripts](#npm-scripts)
+1. [Production and development modes](#production-and-development-modes)
 
 
 
