@@ -140,3 +140,5 @@ Development mode:
     - [bcryptjs](https://www.npmjs.com/package/bcryptjs) is a pure JS module, and it blocks the whole nodejs thread. It's easy to DDOS application.
     - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra depedencies
     - `crypto` is a native nodejs module
+- Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes`. It's ok to use it to generate sample data, but not ok to generate access tokens.
+- The simplest solution to generate access token or reset password  tokens are guids. Use [node-uuid](https://github.com/kelektiv/node-uuid) and generate a v4 UUID.
