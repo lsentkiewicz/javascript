@@ -108,23 +108,23 @@ Example configuration files for Heroku application with MongoLab.
 Both modes are always required.  
 Production mode:
 - `NODE_ENV` must be set to `production`
-- Only errors must be logged to the console. Do not output any debug information because log files will grow really fast.
+- Only errors must be logged to the console. Do not output any debug information because log files will grow fast.
 - Do not return stack traces in the API response.
 
 Development mode:
 - `NODE_ENV` must be set to `development`
-- Watch mode must be implemented. The application should auto reload on any file change. Use [nodemon](https://www.npmjs.com/package/nodemon).
+- Watch mode must be implemented. The application should auto-reload on any file change. Use [nodemon](https://www.npmjs.com/package/nodemon).
 - Allowed to log debug information.
 - Allowed to return stack traces in the API response.
 
 ## Error handling
 - Starter packs use service wrappers for proper error handling.
-- Do not ignore errors in empty `try ... catch`. Log an error or add a proper inline comment in your code.
+- Do not ignore errors in empty `try ... catch`. Log an error or add an appropriate inline comment in your code.
 
 ## Logging
-- It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, extra properties).
+- It's recommended to use [node-bunyan](https://github.com/trentm/node-bunyan) because it logs by default all information from an error instance (message, stack trace, additional properties).
 - By default, do not configure logger to output data to log files. It's handled automatically when deploying to Heroku or when using monitors like [forever](https://www.npmjs.com/package/forever) or [pm2](https://www.npmjs.com/package/pm2).
-- Do not log senstive information (also in development mode): passwords, secrets, access tokens, credit cards. 
+- Do not log sensitive information (also in development mode): passwords, secrets, access tokens, credit cards. 
 
 ## Security
 - Use [pbkdf2](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback) algorithm for password hashing.
@@ -138,7 +138,8 @@ Development mode:
   - In development/test modes you can set a lower value for iterations to speed up development or testing.
   - Why not bcrypt module?
     - [bcryptjs](https://www.npmjs.com/package/bcryptjs) is a pure JS module, and it blocks the whole nodejs thread. It's easy to DDOS application.
-    - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra depedencies
+    - [bcrypt](https://www.npmjs.com/package/bcrypt) contains extra dependencies
     - `crypto` is a native nodejs module
-- Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes`. It's ok to use it to generate sample data, but not ok to generate access tokens.
-- The simplest solution to generate access token or reset password  tokens are guids. Use [node-uuid](https://github.com/kelektiv/node-uuid) and generate a v4 UUID.
+- Do not use `Math.random()` for cryptographic operations, and always use `crypto.randomBytes`. It's ok to use `Math.random()` to generate sample data, but not ok to generate access tokens.
+- The simplest solution to create access tokens or reset password tokens is to use UUID. Use [node-uuid](https://github.com/kelektiv/node-uuid) and generate a v4 UUID.
+- Alternatively, you can create a [random string](https://www.npmjs.com/package/randomstring). When using a charset [a-zA-Z0-9), the string must have min. 20 length.
