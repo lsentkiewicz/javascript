@@ -5,6 +5,9 @@ Standards and best practices for nodejs applications.
 ## Table of Contents
 
 1. [Application structure](#application-structure)
+1. [Configuration](#application-structure)
+1. [Npm scripts](#application-structure)
+1. [Production and development modes](#application-structure)
 
 
 
@@ -83,3 +86,29 @@ Example configuration files for Heroku application with MongoLab.
     "MONGODB_URL": "mongodb://localhost:27017/my_app_test"
 }
 ```
+
+## Npm scripts
+- Use npm scripts to start application and run tests.
+- Do not use gulp, grunt because they are usually not needed.
+- Npm scripts should always set the `NODE_ENV` variable. Use [better-npm-run](https://www.npmjs.com/package/better-npm-run) or [cross-env](https://www.npmjs.com/package/cross-env)
+- Recommended scripts:
+  - `start` start the application in production mode
+  - `dev` start the application in development mode (in watch mode)
+  - `lint` run eslint check
+  - `lint:fix` run eslint check and autofix problems
+  - `spec` run unit tests
+  - `spec:watch` run unit tests in watch mode
+  - `coverage` create coverage report
+  - `test` run lint, unit tests and check coverage
+
+## Production and development modes
+Both modes are always required.  
+Production mode:
+- `NODE_ENV` must be set to `production`
+- Only errors must be logged to the console. Do not output any debug information because log files will grow really fast.
+- Do not return stack traces in the API response.
+Development mode:
+- `NODE_ENV` must be set to `development`
+- Watch mode must be implemented. The application should auto reload on any file change. Use [nodemon](https://www.npmjs.com/package/nodemon).
+- Allowed tp log debug information.
+- Allowed to return stack traces in the API response.
